@@ -8,7 +8,23 @@ const dates = [
 ];
 
 // TODO: Buatlah fungsi createDate
-const createDate = null;
+const createDate = (dates, index) => {
+  let dataEpoch = [];
+
+  for (let index = 0; index < dates.length; index++) {
+    // date parse = selisih data dengan January 1, 1970, 00:00:00 UTC
+    dataEpoch.push(Date.parse(dates[index]));
+    // agar hasil 1651802400000 -> jadi 1651802400 dst, dibulatakan dengan dibagi 1000 
+    dataEpoch[index] = dataEpoch[index]/1000;
+  }
+
+  if (index != null) {
+    return dataEpoch[index].toString();
+  } else {
+    return dataEpoch.sort().join("-").toString();
+  };
+
+};
 
 // ! JANGAN DIMODIFIKASI
 (() => {
